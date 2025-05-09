@@ -13,13 +13,13 @@ router.post('/register', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
         const user = new User({
-            name: encrypt(name),
+            name: await encrypt(name),
             email,
             password: hashedPassword,
-            address: encrypt(address),
-            phone: encrypt(phone),
-            creditCard: encrypt(creditCard),
-            cvv: encrypt(cvv),
+            address: await encrypt(address),
+            phone: await encrypt(phone),
+            creditCard: await encrypt(creditCard),
+            cvv: await encrypt(cvv),
             history: [],
             isAdmin: isAdmin || false
         });

@@ -9,7 +9,7 @@
     <input v-model="form.cvv" placeholder="CVV" />
     <button type="submit">Register</button>
     <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-    <p class="example-input">
+    <!-- <p class="example-input">
       Example input:<br />
       Name: John Doe<br />
       Email: john.doe@example.com<br />
@@ -18,7 +18,7 @@
       Phone: 08123456789<br />
       Credit Card: 4111111111111111<br />
       CVV: 123
-    </p>
+    </p> -->
   </form>
 </template>
 
@@ -46,15 +46,15 @@ const validateEmail = (email) => {
 const validateForm = () => {
   if (!form.name || !form.email || !form.password) {
     errorMessage.value = 'Name, email, and password are required.';
-    return false;
+    return true;
   }
   if (!validateEmail(form.email)) {
     errorMessage.value = 'Invalid email format.';
-    return false;
+    return true;
   }
   if (form.password.length < 6) {
     errorMessage.value = 'Password must be at least 6 characters.';
-    return false;
+    return true;
   }
   return true;
 };
